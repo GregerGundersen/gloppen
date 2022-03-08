@@ -1,10 +1,22 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Nav from "./components/nav/Nav";
+import Admin from "./pages/Admin";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <>
+      <Router>
+          <Nav />
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path='/admin' element={<Admin />} />
+            <Route path='/login' element={<Login />} />
+          </Routes>
+      </Router>
+    </>
   );
 }
 
