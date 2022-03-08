@@ -1,6 +1,6 @@
 const Login = () => {
     return (
-        <h1>Hotel booking</h1>
+        <h1>Login</h1>
     );
 };
 

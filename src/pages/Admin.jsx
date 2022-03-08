@@ -1,6 +1,6 @@
 const Admin = () => {
     return (
-        <h1>Hotel booking</h1>
+        <h1>Admin Page</h1>
     );
 };
 
