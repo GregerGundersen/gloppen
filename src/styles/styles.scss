@@ -56,3 +56,29 @@ img {
 .navLinks li:hover {
     transform: scale(1.1);
 }
+
+
+.header {
+    max-width: 1100px;
+    margin: 50px auto;
+}
+
+.header h1 {
+    font-size: 45px;
+    font-weight: bolder;
+}
+
+.header p {
+    font-size: 25px;
+}
+
+input {
+    height: 35px;
+    padding: 10px;
+    font-size: 20px;
+}
+
+button {
+    width: 100px;
+    height: 35px;
+}
