@@ -20,14 +20,11 @@ const BookingsForm = ({ sendBooking }) => {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('title')} placeholder='Title..' />
-        {errors.title && <span>{errors.title.message}</span>}
+        <input {...register('name')} placeholder='name..' />
+        {errors.name && <span>{errors.name.message}</span>}
 
-        <input {...register('message')} placeholder='Message..' />
-        {errors.message && <span>{errors.message.message}</span>}
-
-        <input {...register('contact')} placeholder='Email..' />
-        {errors.contact && <span>{errors.contact.message}</span>}
+        <input {...register('email')} placeholder='Email..' />
+        {errors.email && <span>{errors.email.message}</span>}
 
         <button>Send</button>
       </form>

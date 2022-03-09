@@ -1,40 +1,43 @@
-import React from "react";
-import StyledLink from "../components/nav/StyledLink";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { BOOKINGS_URL } from "../utils/api";
-import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
-import BookingsForm from "../components/admin/BookingsForm";
+import React from 'react';
+import StyledLink from '../components/nav/StyledLink';
+import { useEffect, useState } from 'react';
+import { BOOKINGS_PATH } from '../utils/api';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import useToggle from '../hooks/useToggle';
+import useAxios from '../hooks/useAxios';
+import AuthContext from '../context/AuthContext';
+import BookingsForm from '../components/admin/BookingsForm';
 
 const Admin = () => {
-  // Error Object State
+  const [isTriggered, setIsTriggered] = useToggle();
   const [error, setError] = useState();
-  // Content State
   const [bookings, setBookings] = useState([]);
-  // Autoredirect hook
   const navigate = useNavigate();
-
   const [auth, setAuth] = useContext(AuthContext);
 
-  // Run Once on Component Load
+  const http = useAxios();
+
   useEffect(() => {
-    // Define our async logic
     const fetchData = async () => {
-      const data = await axios.get(BOOKINGS_URL, {
-        // Payload passed to Strapi
-        headers: {
-          Authorization: `Bearer ${auth}`,
-        },
-      });
-      console.log(data.data.data);
-      // Write data to state
+      const data = await http.get(BOOKINGS_PATH);
       setBookings(data.data.data);
     };
-    // Run fetch, catch errors and write to errors object
+
     fetchData().catch((error) => setError(error.response.data.error));
-  }, []);
+  }, [isTriggered, auth]);
+
+  const sendBooking = async (formData) => {
+    const options = {
+      data: {
+        name: formData.name,
+        email: formData.email,
+      },
+    };
+    const responseData = await http.post(BOOKINGS_PATH, options);
+    console.log(responseData);
+    setIsTriggered();
+  };
 
   // if error object is populated, show user what happened and urge them to login
   if (error) {
@@ -44,31 +47,28 @@ const Admin = () => {
         <h3>The server responded with: {error.status}</h3>
         <p>{error.message}</p>
         <p>Please Login</p>
-        <StyledLink to="/login">Login</StyledLink>
+        <StyledLink to='/login'>Login</StyledLink>
       </div>
     );
   }
 
-  // Logout handler to delete token from storage and redirect
   const handleLogout = () => {
     setAuth(null);
-    navigate("/login");
+    navigate('/login');
   };
 
-  // if bookings are empty, show loading
   if (bookings.length === 0) {
     return <div>Loading...</div>;
   }
 
-  // render page
   return (
     <div>
       <button onClick={handleLogout}>Logout</button>
       {bookings.map((item, idx) => {
-        return <p key={idx}> {item.attributes.title} </p>;
+        return <p key={idx}> {item.attributes.name} </p>;
       })}
       <hr />
-      <BookingsForm />
+      <BookingsForm sendBooking={sendBooking} />
     </div>
   );
 };
