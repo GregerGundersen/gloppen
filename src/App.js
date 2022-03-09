@@ -3,11 +3,13 @@ import Nav from "./components/nav/Nav";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import { AuthProvider } from './context/AuthContext';
 
 
 const App = () => {
   return (
     <>
+    <AuthProvider>
       <Router>
           <Nav />
           <Routes>
@@ -16,6 +18,7 @@ const App = () => {
             <Route path='/login' element={<Login />} />
           </Routes>
       </Router>
+      </AuthProvider>
     </>
   );
 }
