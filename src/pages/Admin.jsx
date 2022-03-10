@@ -61,13 +61,13 @@ const Admin = () => {
   }
 
   return (
-    <div>
-      <button onClick={handleLogout}>Logout</button>
+    <div className='container'>
       {bookings.map((item, idx) => {
         return <p key={idx}> {item.attributes.name} </p>;
       })}
       <hr />
       <BookingsForm sendBooking={sendBooking} />
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
