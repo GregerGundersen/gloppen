@@ -65,7 +65,7 @@ img {
 
 .header {
     max-width: 1100px;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
 .header h1 {
@@ -105,4 +105,30 @@ button {
 .container {
     max-width: 1100px;
     margin: auto;
+}
+
+.room-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+
+.room-container h2 {
+    font-weight: bold;
+}
+
+.header h2 {
+    font-weight: bold;
+    margin-top: 60px;
+    font-size: 30px;
+}
+
+.header h3 {
+    font-size: 25px;
+}
+
+.room-card {
+    border-bottom: solid #333;
+    padding: 10px;
+    margin-top: 20px;
 }

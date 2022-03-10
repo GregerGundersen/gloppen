@@ -17,9 +17,12 @@ const Home = () => {
   return (
     <div className="header">
       <h1>Home page</h1>
-      {room.map((room, idx) => {
-        return <div key={idx}><h2>{room.attributes.roomType}</h2><p>Beds: {room.attributes.numberOfBeds}</p><p>Room number: {room.attributes.roomNumber}</p></div>
-      })}
+      <h2>Rooms available</h2>
+      <div className="room-container">
+        {room.map((room, idx) => {
+        return <div className="room-card" key={idx}><h3>{room.attributes.roomType}</h3><p>Beds: {room.attributes.numberOfBeds}</p><p>Room number: {room.attributes.roomNumber}</p></div>
+        })}
+      </div>
     </div>
   );
 };
