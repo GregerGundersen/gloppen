@@ -1,23 +1,17 @@
-import StyledLink from './StyledLink';
-const styles = {
-  display: 'flex',
-  flexDirection: 'row',
-  listStyleType: 'none',
-  margin: 0,
-  padding: 0,
-};
+import Link from './Link';
+
 
 const NavBar = () => {
   return (
-    <ul style={styles}>
+    <ul>
       <li>
-        <StyledLink to={'/'}>Home</StyledLink>
+        <Link to={'/'}>Home</Link>
       </li>
       <li>
-        <StyledLink to={'/login'}>Login</StyledLink>
+        <Link to={'/login'}>Login</Link>
       </li>
       <li>
-        <StyledLink to={'/admin'}>Admin</StyledLink>
+        <Link to={'/admin'}>Admin</Link>
       </li>
     </ul>
   );

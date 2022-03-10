@@ -1,8 +1,7 @@
 import React from 'react';
-import StyledLink from '../components/nav/StyledLink';
 import { useEffect, useState } from 'react';
 import { BOOKINGS_PATH } from '../utils/api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import useToggle from '../hooks/useToggle';
 import useAxios from '../hooks/useAxios';
@@ -47,10 +46,10 @@ const Admin = () => {
         <h3>The server responded with: {error.status}</h3>
         <p>{error.message}</p>
         <p>Please Login</p>
-        <StyledLink to='/login'>Login</StyledLink>
+        <Link className='login-button' to='/login'>Login</Link>
       </div>
     );
-  }
+  } 
 
   const handleLogout = () => {
     setAuth(null);
