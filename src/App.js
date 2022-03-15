@@ -9,18 +9,18 @@ import { AuthProvider } from './context/AuthContext';
 const App = () => {
   return (
     <>
-    <AuthProvider>
-      <Router>
+      <AuthProvider>
+        <Router>
           <Nav />
           <Routes>
             <Route index element={<Home />} />
-            <Route path='/admin' element={<Admin />} />
-            <Route path='/login' element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
-      </Router>
+        </Router>
       </AuthProvider>
     </>
   );
-}
+};
 
 export default App;
