@@ -71,6 +71,7 @@ img {
 .header h1 {
     font-size: 45px;
     font-weight: bolder;
+    text-align: center;
 }
 
 .header p {
@@ -119,12 +120,15 @@ button {
 
 .header h2 {
     font-weight: bold;
-    margin-top: 60px;
-    font-size: 30px;
+    margin: 30px auto;
+    font-size: 35px;
+    text-align: center;
 }
 
 .header h3 {
     font-size: 25px;
+    border-bottom: solid whitesmoke;
+    max-width: 80%;
 }
 
 .room-card {
@@ -137,4 +141,8 @@ button {
 
 .room-card p {
     color: tomato;
+}
+
+.room-card p:nth-child(3) {
+    color: yellow;
 }
